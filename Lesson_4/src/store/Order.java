@@ -1,5 +1,7 @@
 package store;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 import static store.Customer.findCustomer;
@@ -50,6 +52,17 @@ public class Order {
     public static int orderCount (Order[] queueOrder){
         int count = (int) Arrays.stream(queueOrder).count();
         return count;
+    }
+
+    public static void saveOrderQueue(Order[] queueOrder, String filePath) {
+        try(FileWriter writer = new FileWriter("store.txt", true)){
+            for (Order order : queueOrder){
+                writer.append(order.toString());
+                writer.write("\n");
+                writer.flush();
+            }
+        }catch (IOException | NullPointerException e) {
+        }
     }
 
     @Override

@@ -16,7 +16,6 @@ public class Main {
         Product[] productQueue = new Product[]{product1, product2, product3, product4, product5};
         Order[] orderQueue = new Order[5];
         Order order1 = Order.buyProduct(customerQueue, productQueue);
-        System.out.println(order1);
         Order order2 = Order.buyProduct(customerQueue, productQueue);
         Order order3 = Order.buyProduct(customerQueue, productQueue);
         Order order4 = Order.buyProduct(customerQueue, productQueue);
@@ -27,5 +26,6 @@ public class Main {
         orderQueue[3] = order4;
         orderQueue[4] = order5;
         System.out.println(Order.orderCount(orderQueue));
+        Order.saveOrderQueue(orderQueue, "src/");
     }
 }
